@@ -114,6 +114,37 @@ curl -X GET "http://localhost:8080/api/search/kibana_sample_data_ecommerce/mappi
   }
 }
 ```
+### 3. Search with JSON-Based Filters
+Endpoint:
+```http
+POST /api/search/filter
+```
+
+#### Request Body:
+```JSON
+{
+  "indexName": "opensearch_dashboards_sample_data_ecommerce",
+  "filters": {
+    "customer_gender": "MALE",
+    "taxful_total_price": {
+      "gte": 100,
+      "lte": 200
+    }
+  },
+  "from": 0,
+  "size": 10,
+  "sortField": "order_date",
+  "sortOrder": "desc"
+}
+```
+- **`indexName`**: (String) OpenSearch index to query, e.g., **`opensearch_dashboards_sample_data_ecommerce`**.
+- **`filters`**: (Object) Key-value pairs representing the filter conditions. Use ranges and exact matches as needed.
+   - Example includes filtering by `customer_gender` and a price range for `taxful_total_price`.
+
+- **`from`**: (Integer) Pagination starts index for results, defaults to `0`.
+- **`size`**: (Integer) Maximum number of records to return, defaults to `10`.
+- **`sortField`**: (String) Field by which to sort results, e.g., **`order_date`**.
+- **`sortOrder`**: (String) Sorting order, either **`asc`** or **`des`**
 
 ---
 

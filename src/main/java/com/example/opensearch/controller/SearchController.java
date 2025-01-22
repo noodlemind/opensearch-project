@@ -1,26 +1,22 @@
 package com.example.opensearch.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.opensearch.service.OpenSearchService;
+import com.example.opensearch.model.SearchRequestDTO;
 import java.util.List;
 import java.util.Map;
 
-@RestController  // Changed from @Controller to @RestController
+@RestController
 @RequestMapping("/api/search")
 @RequiredArgsConstructor
 public class SearchController {
 
 	private final OpenSearchService searchService;
 
-	// Basic health check
-	@GetMapping("/")
-	public ResponseEntity<String> healthCheck() {
-		return ResponseEntity.ok("Service is running");
-	}
-
-	// Search endpoint
+	// GET Query
 	@GetMapping("/{indexName}")
 	public ResponseEntity<List<Map<String, Object>>> search(
 			@PathVariable String indexName,
@@ -28,7 +24,19 @@ public class SearchController {
 		return ResponseEntity.ok(searchService.search(indexName, query));
 	}
 
-	// Mapping endpoint
+	//POST endpoint for JSON-based query
+	@RequestMapping(
+			value = "/filter",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+	)
+	public ResponseEntity<List<Map<String, Object>>> searchWithFilters(
+			@RequestBody SearchRequestDTO searchRequest) {
+		return ResponseEntity.ok(searchService.searchWithFilters(searchRequest));
+	}
+
+	// Mapping Endpoint
 	@GetMapping("/{indexName}/mapping")
 	public ResponseEntity<Map<String, Object>> getMapping(
 			@PathVariable String indexName) {
