@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: opensearch-service
+
+opensearch:
+  host: ${OPENSEARCH_HOST:localhost}
+  port: ${OPENSEARCH_PORT:9200}
+
+server:
+  port: 8080

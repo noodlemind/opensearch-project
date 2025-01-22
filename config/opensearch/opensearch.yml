@@ -1,0 +1,16 @@
+cluster.name: opensearch-cluster
+node.name: opensearch-node
+node.roles: [ data, master ]
+network.host: 0.0.0.0
+discovery.type: single-node
+bootstrap.memory_lock: true
+plugins.security.disabled: true
+
+# Performance Settings
+thread_pool.write.queue_size: 1000
+indices.memory.index_buffer_size: 10%
+indices.queries.cache.size: 10%
+
+# Index Settings
+action.auto_create_index: true
+action.destructive_requires_name: true

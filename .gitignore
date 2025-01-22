@@ -1,0 +1,50 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Maven and Gradle related files
+target/
+build/
+.mvn/
+.gradle/
+!gradle-wrapper.jar
+
+# Spring Boot application properties
+*.properties
+*.yml
+*.yaml
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker-related files
+docker-compose.override.yml
+.dockerignore
+
+# Coverage reports and analysis files
+coverage/
+*.lcov
+jacoco-*.exec
+.site/
+
+# Node and frontend-related files (if applicable)
+node_modules/
+npm-debug.log
+.yarn/
+
+# Miscellaneous
+*.class
+*.jar
+*.war
+*.ear
