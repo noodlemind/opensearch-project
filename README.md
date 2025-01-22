@@ -1,6 +1,9 @@
-# OpenSearch Spring Boot POC
+# OpenSearch Spring Boot Starter Project
 
-This project demonstrates the integration between Spring Boot and OpenSearch, providing REST endpoints for searching and exploring OpenSearch indices.
+This project is a **starter template** designed to help you quickly get started with integrating **Spring Boot** and **OpenSearch**. It includes:
+
+- **REST APIs** for querying and managing OpenSearch indices.
+- A pre-configured **Docker Compose** setup to spin up local instances of OpenSearch and OpenSearch Dashboards.
 
 ---
 
